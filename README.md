@@ -1,2 +1,4 @@
 # Complete EBS Life Cycle Management, from creating and deleting Snapshots.
-Using Lambda, CloudWatch Events & 
+This solution uses Amazon Lambda, EC2, CloudWatch Events and DynamoDB 
+There are four Node.js files in this repository
+1. 
