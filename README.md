@@ -1,5 +1,12 @@
 # Complete EBS Life Cycle Management, from creating and deleting Snapshots.
 
+------------------------------------------------------------------------------------------------------------------------------
+Disclaimer: 
+
+These scripts should be used as guidance for creating a complete EBS Life Cycle Management solution for your production environments. They should not be used in production with modification. 
+
+------------------------------------------------------------------------------------------------------------------------------
+
 This solution uses Amazon Lambda, EC2, CloudWatch Events and DynamoDB. When used together, these functions will 
 
 A. Snapshot your EC2 Instances that has a specific Tag (I used a Tag name snapshot with a value of snapshot)
