@@ -208,29 +208,30 @@ request.on('success', function(response) {
 			//------------------------  Amazon EC2 Run Command : Flush Page Cache on Linux Instances to Block Devices -------------
 			
 			var runparams = {
-				DocumentName: 'Linux-SSM-Doc', /* required */
+				DocumentName: 'DOCUMENT-NAME', /* required */
 				InstanceIds: [ /* required */
 					success
 					/* more items */
 				],
+				
 				/* Please note that I have chosen to do a PageCache Flush but you can chose to stop writes and unmounts
 				the block devices as recommended by AWS. */
 				Comment: 'Flushes Linux PageCache to Block Devices', 
 				
 				/* References an EC2 Document that has the command "sync; echo 3 > /proc/sys/vm/drop_caches" defined. */
-				DocumentHash: 'ebbeb08ac1bee5c25ae3d0a1392786ca05c003a73fc7b2251644e3e4571832d9', 
+				DocumentHash: 'ADD Document HASH Here', 
 				DocumentHashType: 'Sha256',
 				NotificationConfig: {
-					NotificationArn: 'arn:aws:sns:us-west-2:574463026149:SSM_Success',
+					NotificationArn: 'arn:aws:sns:AWS-REGION:ACCOUNTNUMBER:SSM_Success',
 					NotificationEvents: [
 						'All'
 						/* more items */
 					],
 					NotificationType: 'Command'
 				},
-				OutputS3BucketName: 'run-cmd-bucks',
-				OutputS3KeyPrefix: 'run',
-				ServiceRoleArn: 'arn:aws:iam::574463026149:role/SSM-Role',
+				OutputS3BucketName: 'YOUR-S3_BUCKET-NAME', //Outputs generated from your shell script will be stored here
+				OutputS3KeyPrefix: 'PREFIX-OF-FOLDER-IN-S3-Bucket',
+				ServiceRoleArn: 'arn:aws:iam::ACCOUNTNUMBER:role/ROLE-NAME',
 				TimeoutSeconds: 3600
 			};
 			
