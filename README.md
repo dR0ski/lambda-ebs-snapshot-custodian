@@ -15,7 +15,9 @@ B. Write the Snapshot MetaData to DynamoDB
 
 C. Update the Status field of the DynamoDB Table with the new status, for example from Pending to Completed
 
-D. Lastly, Your Snapshots will be deleted after the number of day you specified for them to live. The lifetime is stored in the value of the Tag you created for this reason. In my code I added  the Tag "Snaplifetime" and a Value of "2" or "4" to my  EC2 instances. You are required to do this as well. Your Tag name and values can be what ever you want them to be. 
+D. Lastly, Your Snapshots will be deleted after the number of days you specified for them to live has expired. The lifetime is stored in the value of the Tag you created for this reason. In my code I added  the Tag "Snaplifetime" and a Value of "2" or "4" to my  EC2 instances. You are required to do this as well. Your Tag name and values can be what ever you want them to be. 
+
+E. If you chose to use the bonus script you will need to install the SSM Agent on each of your EC2 Instances. You will also need to create your Own Document File that EC2 Run Command will use. Please note that the section of the Bonus Script for EC2 Run Command must be modified with your attributes. 
 
 Instructions:
 
