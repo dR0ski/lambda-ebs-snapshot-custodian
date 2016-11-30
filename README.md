@@ -94,3 +94,8 @@ Where device_name is the device name (for example, /dev/sdh).
 After you've created a snapshot, you can tag it to help you manage it later. "
 
 
+It is important that you :
+
+- Add retry logic to these scripts
+- Amazon Limits are changed/increase to match your needs/requirements
+- Ensure that the number of writes and reads units that is configured for your DynamoDB table matches the amount of request going to your table
