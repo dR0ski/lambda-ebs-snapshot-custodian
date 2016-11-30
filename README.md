@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------------------------------------------------------
 Disclaimer: 
 
-These scripts should be used as guidance for creating a complete EBS Life Cycle Management solution for your production environments. They should not be used in production with modification. 
+These scripts should be used as guidance for creating a complete EBS Life Cycle Management solution for your production environments. They should not be used in production without modification. 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
