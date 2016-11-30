@@ -101,7 +101,8 @@ It is important that you :
 - Ensure that the number of writes and reads units that is configured for your DynamoDB table matches the amount of request going to your table
 
 
-Interesting Reads:
+
+Interesting Reads :
 
 - Amazon EC2 Run Command on Linux : http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/execute-remote-commands.html
 
