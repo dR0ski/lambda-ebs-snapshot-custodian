@@ -115,6 +115,7 @@ Interesting Reads:
   machines, inventory machines to see which applications are missing or need patching, patch machines, build a deployment
   pipeline, bootstrap applications, and join instances to a domain, to name a few.
 
+
 - Amazon EBS Snapshots            : http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html
 
   After writing data to an EBS volume, you can periodically create a snapshot of the volume to use as a baseline for new 
@@ -126,11 +127,21 @@ Interesting Reads:
 
 - Amazon Lambda                   : http://docs.aws.amazon.com/lambda/latest/dg/welcome.html
 
-When AWS Lambda executes your Lambda function on your behalf, it takes care of provisioning and managing resources needed to run your Lambda function. When you create a Lambda function, you specify configuration information, such as the amount of memory and maximum execution time that you want to allow for your Lambda function. When a Lambda function is invoked, AWS Lambda launches a container (that is, an execution environment) based on the configuration settings you provided.
+  When AWS Lambda executes your Lambda function on your behalf, it takes care of provisioning and managing resources needed to
+  run your Lambda function. When you create a Lambda function, you specify configuration information, such as the amount of
+  memory and maximum execution time that you want to allow for your Lambda function. When a Lambda function is invoked, AWS
+  Lambda launches a container (that is, an execution environment) based on the configuration settings you provided.
+
+
+- Amazon DynamoDB                 : http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html
+
+  Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless
+  scalability. DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database, so that
+  you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster
+  scaling.
 
 
 
-- Amazon DynamoDB                 :
 
 
 
