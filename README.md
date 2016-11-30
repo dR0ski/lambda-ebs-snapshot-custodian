@@ -58,7 +58,7 @@ Please note that you can leverage EC2 Run Command to take this a step further by
 You must schedule this fucntion to run by creating a CloudWatch Event. This schedule can be whatever you want it to. Please note that there are default limits on the number of snapshots you can create, please ensure that your limits meet your needs. You can easily increase your limits by submitting a request to AWS. 
 
 
-<b>2. reinv-snapshot-state-change copy.js<b>
+<b>2. reinv-snapshot-state-change copy.js</b>
 
 Used to update the "State" field of the Table in DynamoDb with the state of the Snapshot after you have made the CreateSnapshot API call. 
 
