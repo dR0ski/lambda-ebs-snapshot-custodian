@@ -1,7 +1,7 @@
 # Complete EBS Life Cycle Management, from creating and deleting Snapshots.
 
 ------------------------------------------------------------------------------------------------------------------------------
-Disclaimer: 
+***Disclaimer: 
 
 These scripts should be used as guidance for creating a complete EBS Life Cycle Management solution for your production environments. They should not be used in production without modification. 
 
