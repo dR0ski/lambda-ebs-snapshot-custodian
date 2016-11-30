@@ -18,7 +18,7 @@ C. Update the Status field of the DynamoDB Table with the new status, for exampl
 D. Lastly, Your Snapshots will be deleted after the number of days you specified for them to live has expired. The lifetime is stored in the value of the Tag you created for this reason. In my code I added  the Tag "Snaplifetime" and a Value of "2" or "4" to my  EC2 instances. You are required to do this as well. Your Tag name and values can be what ever you want them to be. 
 
 
-*** Instructions:
+<b>Instructions:</b>
 
 - Create Amazon Lambda functions for each files. At the end of this process you should have three Lambda Functions. 
   The IAM role you create for Lambda should allow you access to DynamoDB, EC2 and SNS.
