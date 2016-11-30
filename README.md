@@ -1,7 +1,7 @@
 # Complete EBS Life Cycle Management, from creating and deleting Snapshots.
 
 ------------------------------------------------------------------------------------------------------------------------------
-*** Disclaimer: 
+<b>Disclaimer:</b> 
 
 These scripts should be used as guidance for creating a complete EBS Life Cycle Management solution for your production environments. They should not be used in production without modification. 
 
@@ -34,7 +34,7 @@ D. Lastly, Your Snapshots will be deleted after the number of days you specified
 - If you chose to use the bonus script you will need to install the SSM Agent on each of your EC2 Instances. You will also need to create your Own Document File that EC2 Run Command will use. Please note that the section of the Bonus Script for EC2 Run Command must be modified with your attributes. 
 
 
-*** AWS Services Used:
+<b>AWS Services Used:</b>
 
 - Amazon Lambda
 - Amazon DynamoDB
@@ -45,7 +45,7 @@ D. Lastly, Your Snapshots will be deleted after the number of days you specified
 
 There are four Node.js files in this repository. 
 
-1. reinv-ebs-snapshot-creation copy.js : 
+<b>1. reinv-ebs-snapshot-creation copy.js : </b>
 
 Used to create a snapshot of an Amazon EBS Volume. This should be used as a base for building your Lmabda functions to achieve Snapshots according Amazon Best Practices. 
 
@@ -58,13 +58,13 @@ Please note that you can leverage EC2 Run Command to take this a step further by
 You must schedule this fucntion to run by creating a CloudWatch Event. This schedule can be whatever you want it to. Please note that there are default limits on the number of snapshots you can create, please ensure that your limits meet your needs. You can easily increase your limits by submitting a request to AWS. 
 
 
-2. reinv-snapshot-state-change copy.js
+<b>2. reinv-snapshot-state-change copy.js<b>
 
 Used to update the "State" field of the Table in DynamoDb with the state of the Snapshot after you have made the CreateSnapshot API call. 
 
 You must Create a CloudWatch Event to schedule this function to run multiple times each day. During testing, I schedule this function run every hour. That, however, is overkill
 
-3. reinv-delete-snapshot copy.js : 
+<b>3. reinv-delete-snapshot copy.js : </b>
 
 This script is used to delete each created snapshot after a the period of time you specified. You must add a Tag to your EC2 Instance. The Tag Key can be whatever you want it to be, I used snaplifetime but you can chose to do something else. You must specify a value along with the Tag. The Value is the number of days you would like a Snapshot for this specific Instance to live. 
 
@@ -74,13 +74,13 @@ You must schedule this function to run using CloudWatch Events. I generally run 
 
 BONUS SCRIPT! BONUS SCRIPT! BONUS SCRIPT! BONUS SCRIPT! BONUS SCRIPT!
 
-4.  reinv-EBS-Snapshot-EC2-RunCmd copy.js
+<b>4.  reinv-EBS-Snapshot-EC2-RunCmd copy.js </b>
 
 "reinv-EBS-Snapshot-EC2-RunCmd copy.js" is a modified version of "reinv-ebs-snapshot-creation copy.js ". It is important to note that "reinv-EBS-Snapshot-EC2-RunCmd copy.js" leverages Amazon EC2 Run Command to run shell scripts on the EC2 Instance that the Volumes are being snapshotted for. 
 
 The shell script that I ran on my Linux Instances is "sync; echo 3 > /proc/sys/vm/drop_caches" but this could easily have been something far more complex. For example, if I was to write this shell script to achieve a Snapshot according to Amazon best practices then I would simply flush the caches to my block volumes and unmount the volumes then snapshot them and remount when I am finish. You can do this as well as a matter of fact I recommend that you do. Read more on Snapshoting EBS Volumes at "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html" and EC2 Run Commands at "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/execute-remote-commands.html". 
 
-Amazon EBS Recommendations for creating a Snapshot of an Instane:
+<b>Amazon EBS Recommendations for creating a Snapshot of an Instane:,/b>
 
 " You can take a snapshot of an attached volume that is in use. However, snapshots only capture data that has been written to your Amazon EBS volume at the time the snapshot command is issued. This might exclude any data that has been cached by any applications or the operating system. If you can pause any file writes to the volume long enough to take a snapshot, your snapshot should be complete. However, if you can't pause all file writes to the volume, you should unmount the volume from within the instance, issue the snapshot command, and then remount the volume to ensure a consistent and complete snapshot. You can remount and use your volume while the snapshot status is pending.
 
@@ -94,7 +94,7 @@ Where device_name is the device name (for example, /dev/sdh).
 After you've created a snapshot, you can tag it to help you manage it later. "
 
 
-It is important that you :
+<b>It is important that you :</b>
 
 - Add retry logic to these scripts
 - Amazon Limits are changed/increase to match your needs/requirements
@@ -102,9 +102,9 @@ It is important that you :
 
 
 
-Interesting Reads :
+<b>Interesting Reads :</b>
 
-- Amazon EC2 Run Command on Linux : http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/execute-remote-commands.html
+- <b>Amazon EC2 Run Command on Linux :</b> http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/execute-remote-commands.html
 
   Amazon Elastic Compute Cloud (Amazon EC2) Run Command lets you remotely and securely manage the configuration of your Amazon
   EC2 instances, virtual machines (VMs) and servers in hybrid environments, or VMs from other cloud providers. Run Command
@@ -117,7 +117,7 @@ Interesting Reads :
   pipeline, bootstrap applications, and join instances to a domain, to name a few.
 
 
-- Amazon EBS Snapshots            : http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html
+- <b>Amazon EBS Snapshots </b>           : http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html
 
   After writing data to an EBS volume, you can periodically create a snapshot of the volume to use as a baseline for new 
    volumes or for data backup. If you make periodic snapshots of a volume, the snapshots are incremental so that only the
@@ -126,7 +126,7 @@ Interesting Reads :
    order to restore the volume.
 
 
-- Amazon Lambda                   : http://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+- <b>Amazon Lambda    </b>               : http://docs.aws.amazon.com/lambda/latest/dg/welcome.html
 
   When AWS Lambda executes your Lambda function on your behalf, it takes care of provisioning and managing resources needed to
   run your Lambda function. When you create a Lambda function, you specify configuration information, such as the amount of
@@ -134,7 +134,7 @@ Interesting Reads :
   Lambda launches a container (that is, an execution environment) based on the configuration settings you provided.
 
 
-- Amazon DynamoDB                 : http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html
+- <b>Amazon DynamoDB  </b>               : http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html
 
   Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless
   scalability. DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database, so that
