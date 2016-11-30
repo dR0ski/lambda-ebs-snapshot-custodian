@@ -80,7 +80,7 @@ BONUS SCRIPT! BONUS SCRIPT! BONUS SCRIPT! BONUS SCRIPT! BONUS SCRIPT!
 
 The shell script that I ran on my Linux Instances is "sync; echo 3 > /proc/sys/vm/drop_caches" but this could easily have been something far more complex. For example, if I was to write this shell script to achieve a Snapshot according to Amazon best practices then I would simply flush the caches to my block volumes and unmount the volumes then snapshot them and remount when I am finish. You can do this as well as a matter of fact I recommend that you do. Read more on Snapshoting EBS Volumes at "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html" and EC2 Run Commands at "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/execute-remote-commands.html". 
 
-<b>Amazon EBS Recommendations for creating a Snapshot of an Instane:,/b>
+<b>Amazon EBS Recommendations for creating a Snapshot of an Instane:</b>
 
 " You can take a snapshot of an attached volume that is in use. However, snapshots only capture data that has been written to your Amazon EBS volume at the time the snapshot command is issued. This might exclude any data that has been cached by any applications or the operating system. If you can pause any file writes to the volume long enough to take a snapshot, your snapshot should be complete. However, if you can't pause all file writes to the volume, you should unmount the volume from within the instance, issue the snapshot command, and then remount the volume to ensure a consistent and complete snapshot. You can remount and use your volume while the snapshot status is pending.
 
