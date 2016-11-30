@@ -17,9 +17,6 @@ C. Update the Status field of the DynamoDB Table with the new status, for exampl
 
 D. Lastly, Your Snapshots will be deleted after the number of days you specified for them to live has expired. The lifetime is stored in the value of the Tag you created for this reason. In my code I added  the Tag "Snaplifetime" and a Value of "2" or "4" to my  EC2 instances. You are required to do this as well. Your Tag name and values can be what ever you want them to be. 
 
-E. I have added the bonus script (Snapshot-creation-EC2-Run-Cmd) to this repository. allows you to run shell scripts on your instances before the snapshot takes place. 
-
-If you chose to use the bonus script you will need to install the SSM Agent on each of your EC2 Instances. You will also need to create your Own Document File that EC2 Run Command will use. Please note that the section of the Bonus Script for EC2 Run Command must be modified with your attributes. 
 
 Instructions:
 
@@ -31,6 +28,11 @@ Instructions:
 - Create a Table in DynamoDB to store your Snapshot MetaData. This data facilitates the deletion of your Snapshots and the State status manipulation.
 
 - Most Importantly, you are required to Tag your Instances. There are two Tags that you must assign to your Instances. The first Tag tells your Lambda function which Instances are eligible to have their EBS Volumes snapshoted. The other tells the Lambda function how many days these Snapshots should be stored for. In the Snapshot creation function I used the Tag "snapshot" with value of "snapshot" to decide which Instance are eligble to have snapshots created for their Volumes. The second Tag I used is "snapshotlifetime" that holds the value for the number of days this snapshot should be stored for. 
+
+- I have added the bonus script (Snapshot-creation-EC2-Run-Cmd) to this repository.This allows you to run shell scripts on your instances before the snapshot is triggered. One thing that this allows you to do is run commands like "fsfreeze -f mountpoint" on Linux Instances which stops writes to the filesystem assigned to your block device. After the snapshot completes you could run the command the opposite command to unfreeze your filesystem which is "fsfreeze -u mountpoint". 
+
+- If you chose to use the bonus script you will need to install the SSM Agent on each of your EC2 Instances. You will also need to create your Own Document File that EC2 Run Command will use. Please note that the section of the Bonus Script for EC2 Run Command must be modified with your attributes. 
+
 
 Amazon Web Services Services Used:
 
