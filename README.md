@@ -99,3 +99,45 @@ It is important that you :
 - Add retry logic to these scripts
 - Amazon Limits are changed/increase to match your needs/requirements
 - Ensure that the number of writes and reads units that is configured for your DynamoDB table matches the amount of request going to your table
+
+
+Interesting Reads:
+
+- Amazon EC2 Run Command on Linux : http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/execute-remote-commands.html
+
+  Amazon Elastic Compute Cloud (Amazon EC2) Run Command lets you remotely and securely manage the configuration of your Amazon
+  EC2 instances, virtual machines (VMs) and servers in hybrid environments, or VMs from other cloud providers. Run Command
+  enables you to automate common administrative tasks and perform ad hoc configuration changes at scale. You can use Run
+  Command from the EC2 console, the AWS Command Line Interface, Windows PowerShell, or the AWS SDKs. Run Command is offered at
+  no  additional cost.
+
+  Administrators use Run Command to perform the following types of tasks: monitor their systems, install applications on their
+  machines, inventory machines to see which applications are missing or need patching, patch machines, build a deployment
+  pipeline, bootstrap applications, and join instances to a domain, to name a few.
+
+- Amazon EBS Snapshots            : http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html
+
+  After writing data to an EBS volume, you can periodically create a snapshot of the volume to use as a baseline for new 
+   volumes or for data backup. If you make periodic snapshots of a volume, the snapshots are incremental so that only the
+   blocks on the device that have changed after your last snapshot are saved in the new snapshot. Even though snapshots are
+   saved incrementally, the snapshot deletion process is designed so that you need to retain only the most recent snapshot in
+   order to restore the volume.
+
+
+- Amazon Lambda                   : http://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+
+When AWS Lambda executes your Lambda function on your behalf, it takes care of provisioning and managing resources needed to run your Lambda function. When you create a Lambda function, you specify configuration information, such as the amount of memory and maximum execution time that you want to allow for your Lambda function. When a Lambda function is invoked, AWS Lambda launches a container (that is, an execution environment) based on the configuration settings you provided.
+
+
+
+- Amazon DynamoDB                 :
+
+
+
+
+
+
+
+
+
+
