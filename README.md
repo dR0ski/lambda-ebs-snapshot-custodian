@@ -7,24 +7,30 @@ These scripts should be used as guidance for creating a complete EBS Life Cycle 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
-This solution uses Amazon Lambda, EC2, CloudWatch Events and DynamoDB. When used together, these functions will 
+This solution uses Amazon Lambda, EC2, CloudWatch Events, DynamoDB and EC2 Run Command(bonus script). When used together, these functions will :
 
-A. Snapshot the EBS volumes attached to your EC2 Instances that has a specific Tag (I added the Tag "snapshot" to my Instances  with a value of "snapshot")
+A. Create Snapshots of your EBS volumes that are attached to your EC2 Instances. This is a accomplish by looking for EC2 Instances that has a certain Tag assigned to them, for example 'snapshot'. Snapshots are then created of the Non Root EBS volumes that are attached to this Instance. Please note that I used the Tag "snapshot" in the snapshot creation script but you can change this what you like. 
 
-B. Write the Snapshot MetaData to DynamoDB
+B. The meta-data for each snapshot is stored in a DynamoDB Table (caled 'Snaps'). 
 
 C. Update the Status field of the DynamoDB Table with the new status, for example from Pending to Completed
 
 D. Lastly, Your Snapshots will be deleted after the number of days you specified for them to live has expired. The lifetime is stored in the value of the Tag you created for this reason. In my code I added  the Tag "Snaplifetime" and a Value of "2" or "4" to my  EC2 instances. You are required to do this as well. Your Tag name and values can be what ever you want them to be. 
 
-E. If you chose to use the bonus script you will need to install the SSM Agent on each of your EC2 Instances. You will also need to create your Own Document File that EC2 Run Command will use. Please note that the section of the Bonus Script for EC2 Run Command must be modified with your attributes. 
+E. I have added the bonus script (Snapshot-creation-EC2-Run-Cmd) to this repository. allows you to run shell scripts on your instances before the snapshot takes place. 
+
+If you chose to use the bonus script you will need to install the SSM Agent on each of your EC2 Instances. You will also need to create your Own Document File that EC2 Run Command will use. Please note that the section of the Bonus Script for EC2 Run Command must be modified with your attributes. 
 
 Instructions:
 
-- Use Lambda to run your functions
-- Leverage the schedule option in CloudWatch Events to schedule when your functions should run
-- Create a Table in DynamoDB to store your Snapshot MetaData. This data is used to delete your Snapshots 
-- Tag your Instances. You will need to add a Tag to your Instances that you would like to create Snapshots for. You will also - need to add a Tag to your Instance that specifies how long that Snapshot should live for
+- Create Amazon Lambda functions for each files. At the end of this process you should have three Lambda Functions. 
+  The IAM role you create for Lambda should allow you access to DynamoDB, EC2 and SNS.
+  
+- Create Schedule events in Amazon CloudWatch Events. You will need to create three schedules, one that dictates when snapshots are created, one that updates the status of the snapshots in your DynamoDB table and the last one that deletes your snapshots. 
+
+- Create a Table in DynamoDB to store your Snapshot MetaData. This data facilitates the deletion of your Snapshots and the State status manipulation.
+
+- Most Importantly, you are required to Tag your Instances. There are two Tags that you must assign to your Instances. The first Tag tells your Lambda function which Instances are eligible to have their EBS Volumes snapshoted. The other tells the Lambda function how many days these Snapshots should be stored for. In the Snapshot creation function I used the Tag "snapshot" with value of "snapshot" to decide which Instance are eligble to have snapshots created for their Volumes. The second Tag I used is "snapshotlifetime" that holds the value for the number of days this snapshot should be stored for. 
 
 Amazon Web Services Services Used:
 
