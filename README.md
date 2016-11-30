@@ -34,13 +34,13 @@ Instructions:
 - If you chose to use the bonus script you will need to install the SSM Agent on each of your EC2 Instances. You will also need to create your Own Document File that EC2 Run Command will use. Please note that the section of the Bonus Script for EC2 Run Command must be modified with your attributes. 
 
 
-Amazon Web Services Services Used:
+AWS Services Used:
 
-- Lambda
-- DynamoDB
-- Cloud Watch Events
-- EC2 Run Command
-- EBS
+- Amazon Lambda
+- Amazon DynamoDB
+- Amazon Cloud Watch Events
+- Amazon EC2 Run Command
+- Amazon EBS
 
 
 There are four Node.js files in this repository. 
