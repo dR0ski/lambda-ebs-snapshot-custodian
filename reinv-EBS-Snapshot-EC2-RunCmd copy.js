@@ -222,7 +222,7 @@ request.on('success', function(response) {
 				DocumentHash: 'ADD Document HASH Here', 
 				DocumentHashType: 'Sha256',
 				NotificationConfig: {
-					NotificationArn: 'arn:aws:sns:AWS-REGION:ACCOUNTNUMBER:SSM_Success',
+					NotificationArn: 'arn:aws:sns:AWS-REGION:ACCOUNTNUMBER:NOTIFICATION_NAME',
 					NotificationEvents: [
 						'All'
 						/* more items */
