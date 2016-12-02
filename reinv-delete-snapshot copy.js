@@ -12,7 +12,7 @@ var dynoClient = new AWS.DynamoDB.DocumentClient({ region: 'us-west-2' }); //IF 
 exports.handler = (event, context, callback) => {
 
 var params = {
-    TableName: 'SnapSH', //REPLACE 'SNAPSH' WITH A DYNAMODB TABLE YOU CREATED 
+    TableName: 'Snaps', //REPLACE 'SNAPS' WITH A DYNAMODB TABLE YOU CREATED 
 };
 
 
